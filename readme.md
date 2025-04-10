@@ -128,3 +128,19 @@ npx cap open ios
 # Ejecutar pruebas unitarias
 npm run test
 ```
+
+## 🧪 Ejemplo
+
+Puedes descargar la aplicación Android directamente desde la carpeta `example/android` en el proyecto. Sigue estos pasos:
+
+1. Dirígete a la carpeta `example/android` dentro de tu proyecto.
+2. Descarga el archivo **APK** de la aplicación desde el siguiente enlace:
+
+```
+# Ruta del archivo APK
+example/android/Cat breeds.apk
+```
+
+3. Instala el archivo APK en tu dispositivo Android:
+   - Si tienes habilitada la **instalación de aplicaciones desde fuentes desconocidas** en tu dispositivo, simplemente haz clic en el archivo APK y selecciona **Instalar**.
+   - Si no has habilitado esta opción, ve a **Ajustes > Seguridad > Fuentes desconocidas** y actívala para permitir la instalación.
