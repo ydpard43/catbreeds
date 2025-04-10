@@ -1,0 +1,52 @@
+<ion-header
+  translucent="true"
+  mode="ios"
+  class="ion-no-border ion-safe-area-top"
+>
+  <ion-toolbar>
+    <ion-buttons mode="md" slot="start">
+      <ion-back-button defaultHref="" (click)="closeModal()"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Breed: {{ cat.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modal-content">
+  <div class="card-container">
+    <ion-card mode="md">
+      <img alt="cat" [src]="cat.image.url" />
+
+      <ion-card-content>
+        <ion-card-subtitle class="description">
+          <strong>Description: </strong> {{ cat.description }}
+        </ion-card-subtitle>
+
+        <ion-card-subtitle>
+          <strong>Origin:</strong> {{ cat.origin }}
+          <img
+            [src]="'https://flagcdn.com/w40/' + cat.country_code.toLowerCase() + '.png'"
+            alt="flag"
+            class="flag"
+          />
+        </ion-card-subtitle>
+
+        <div class="score" *ngFor="let trait of traits">
+          <label><strong> {{ trait.label }}:</strong></label>
+          <app-cat-score [score]="cat[trait.key]"></app-cat-score>
+        </div>
+
+        <ion-card-subtitle *ngFor="let detail of textDetails">
+          <strong>{{ detail.label }}: </strong> {{ detail.value(cat) }}
+        </ion-card-subtitle>
+
+        <ion-card-subtitle
+          *ngFor="let link of linkDetails"
+          [hidden]="!cat[link.key]"
+        >
+          <strong>{{ link.label }}: </strong>
+          <a [href]="cat[link.key]" target="_blank">{{ cat[link.key] }}</a>
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

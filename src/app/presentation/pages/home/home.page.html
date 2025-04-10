@@ -1,0 +1,52 @@
+<ion-header mode="md">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Cat Breeds</ion-title>
+  </ion-toolbar>
+
+  <div class="search-container">
+    <div class="input-wrapper">
+      <input
+        [(ngModel)]="filter"
+        (ngModelChange)="getCats()"
+        placeholder="Search ..."
+      />
+      <ion-icon name="search-outline"></ion-icon>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <div class="card-container responsive-grid">
+    <ion-card
+      class="cursor-pointer"
+      *ngFor="let cat of cats"
+      mode="md"
+      (click)="showDetails(cat)"
+    >
+      <img alt="cat" [src]="cat?.image?.url" />
+
+      <ion-card-header>
+        <ion-card-title>{{ cat.name }}</ion-card-title>
+        <ion-card-subtitle>
+          <strong>Country:</strong> {{ cat.origin }}
+          <img
+            [src]="'https://flagcdn.com/w40/' + cat.country_code.toLowerCase() + '.png'"
+            alt="flag"
+            class="flag"
+          />
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="score">
+          <label><strong>Intelligence:</strong></label>
+          <app-cat-score [score]="cat.intelligence"></app-cat-score>
+        </div>
+
+        <ion-button expand="block" size="small" fill="outline">
+          View details
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

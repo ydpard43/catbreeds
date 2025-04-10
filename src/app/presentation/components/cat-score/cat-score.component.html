@@ -1,0 +1,5 @@
+<div class="stars">
+  <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+    <span [class.filled]="score > i">★</span>
+  </ng-container>
+</div>
