@@ -4,6 +4,7 @@ import { GetCatsUseCase } from '../../../core/use-cases/get-cats.usecase';
 import { of } from 'rxjs';
 import { Cats } from 'src/app/core/models/cats.model';
 import { ShowCatDetailsModal } from '../modals/breed-details/show-cat-details.modal';
+import { catMock } from '../../mocks/cat.mock';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -34,15 +35,15 @@ describe('HomePage', () => {
   });
 
   it('should call GetCatsUseCase and set cats on ngOnInit', () => {
-    const fakeCats: Cats[] = [{ id: '1', name: 'Cat1' } as any];
+    const fakeCats: Cats[] = [catMock as Cats];
     mockGetCatsUseCase.execute.and.returnValue(of(fakeCats));
     component.ngOnInit();
     expect(mockGetCatsUseCase.execute).toHaveBeenCalledWith('');
     expect(component.cats).toEqual(fakeCats);
   });
 
-  it('should call ShowCatDetailsModal.present with correct cat', () => {
-    const cat: Cats = { id: '1', name: 'Persian' } as any;
+  it('should call ShowCatDetailsModal.present with the correct cat', () => {
+    const cat: Cats = catMock as Cats;
     component.showDetails(cat);
     expect(mockShowCatDetailsModal.present).toHaveBeenCalledWith(cat);
   });

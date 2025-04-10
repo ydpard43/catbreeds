@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   getCats() {
     this.getCatsUseCase.execute(this.filter).subscribe({
       next: (response) => {
-        this.cats = response;
+        this.cats = response.filter((cat)=> cat?.image?.url);
       },
       error: (err) => {
         console.error(err);
