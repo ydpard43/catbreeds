@@ -94,7 +94,7 @@ npx cap --version
 
 ```bash
 # Clona el repositorio
-git clone https://github.com/tuusuario/cats-app.git
+git https://github.com/ydpard43/catbreeds.git
 cd cats-app
 
 # Instala las dependencias
